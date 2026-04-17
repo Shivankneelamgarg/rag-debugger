@@ -1,0 +1,99 @@
+{
+  "trace_id": "hallucination-001",
+  "schema_version": "0.1",
+  "timestamp": "2026-04-17T10:20:00Z",
+  "status": "completed",
+  "pipeline_name": "grounding-demo",
+  "tags": [
+    "example",
+    "grounding"
+  ],
+  "metadata": {},
+  "privacy": {
+    "store_full_prompt": false,
+    "store_full_embeddings": false,
+    "redacted_fields": []
+  },
+  "query_input": {
+    "text": "What does the handbook say about leave policy?",
+    "timestamp": "2026-04-17T10:20:00Z",
+    "query_id": "query-hallucination-001",
+    "metadata": {}
+  },
+  "embedding_step": null,
+  "retrieval_step": {
+    "query_embedding": null,
+    "num_chunks_retrieved": 2,
+    "retrieved_chunks": [
+      {
+        "chunk_id": "chunk-1",
+        "text": "Employees receive 12 days of annual leave each year.",
+        "source": "docs/handbook.md",
+        "similarity_score": 0.93,
+        "rank": 1,
+        "chunk_index": 0,
+        "metadata": {},
+        "document_id": "handbook",
+        "document_version": "7",
+        "content_hash": "pqr678",
+        "chunk_size": 256,
+        "chunk_overlap": 32
+      },
+      {
+        "chunk_id": "chunk-2",
+        "text": "Unused annual leave does not roll over automatically.",
+        "source": "docs/handbook.md",
+        "similarity_score": 0.89,
+        "rank": 2,
+        "chunk_index": 1,
+        "metadata": {},
+        "document_id": "handbook",
+        "document_version": "7",
+        "content_hash": "stu901",
+        "chunk_size": 256,
+        "chunk_overlap": 32
+      }
+    ],
+    "retrieval_method": "semantic_search",
+    "latency_ms": 28.0,
+    "top_k": 4,
+    "reranker_name": null
+  },
+  "context_assembly": {
+    "assembled_context": "Employees receive 12 days of annual leave each year. Unused annual leave does not roll over automatically.",
+    "chunks_used": [
+      "chunk-1",
+      "chunk-2"
+    ],
+    "total_tokens": 29,
+    "window_size": 2048,
+    "truncation_applied": false
+  },
+  "llm_generation": {
+    "model_name": "gpt-4.1-mini",
+    "generated_answer": "Employees receive 12 days of annual leave each year. Unused leave does not roll over automatically. Sick leave is 20 days.",
+    "latency_ms": 360.0,
+    "tokens_input": 160,
+    "tokens_output": 38,
+    "cost_usd": 0.001,
+    "temperature": 0.2,
+    "max_tokens": 256,
+    "top_p": 1.0,
+    "system_prompt": null,
+    "user_query": "What does the handbook say about leave policy?",
+    "full_prompt": null
+  },
+  "final_answer": "Employees receive 12 days of annual leave each year. Unused leave does not roll over automatically. Sick leave is 20 days.",
+  "errors": [],
+  "summary": {
+    "total_latency_ms": 388.0,
+    "total_input_tokens": 160,
+    "total_output_tokens": 38,
+    "total_cost_usd": 0.001,
+    "retrieved_chunk_count": 2,
+    "context_chunk_count": 2
+  },
+  "quality_score": null,
+  "issues_detected": [],
+  "recommendations": []
+}

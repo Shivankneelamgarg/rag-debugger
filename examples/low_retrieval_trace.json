@@ -1,0 +1,113 @@
+{
+  "trace_id": "low-retrieval-001",
+  "schema_version": "0.1",
+  "timestamp": "2026-04-17T10:10:00Z",
+  "status": "completed",
+  "pipeline_name": "low-retrieval-demo",
+  "tags": [
+    "example",
+    "retrieval"
+  ],
+  "metadata": {},
+  "privacy": {
+    "store_full_prompt": false,
+    "store_full_embeddings": false,
+    "redacted_fields": []
+  },
+  "query_input": {
+    "text": "When was the company founded?",
+    "timestamp": "2026-04-17T10:10:00Z",
+    "query_id": "query-low-retrieval-001",
+    "metadata": {}
+  },
+  "embedding_step": null,
+  "retrieval_step": {
+    "query_embedding": null,
+    "num_chunks_retrieved": 3,
+    "retrieved_chunks": [
+      {
+        "chunk_id": "chunk-1",
+        "text": "The product team meets every Tuesday morning.",
+        "source": "docs/org.md",
+        "similarity_score": 0.45,
+        "rank": 1,
+        "chunk_index": 0,
+        "metadata": {},
+        "document_id": "org-doc",
+        "document_version": "2",
+        "content_hash": "ghi789",
+        "chunk_size": 256,
+        "chunk_overlap": 32
+      },
+      {
+        "chunk_id": "chunk-2",
+        "text": "Coffee is served in the lobby after 9 AM.",
+        "source": "docs/org.md",
+        "similarity_score": 0.39,
+        "rank": 2,
+        "chunk_index": 1,
+        "metadata": {},
+        "document_id": "org-doc",
+        "document_version": "2",
+        "content_hash": "jkl012",
+        "chunk_size": 256,
+        "chunk_overlap": 32
+      },
+      {
+        "chunk_id": "chunk-3",
+        "text": "The company began as a research project in 2018.",
+        "source": "docs/about.md",
+        "similarity_score": 0.71,
+        "rank": 3,
+        "chunk_index": 0,
+        "metadata": {},
+        "document_id": "about-doc",
+        "document_version": "4",
+        "content_hash": "mno345",
+        "chunk_size": 256,
+        "chunk_overlap": 32
+      }
+    ],
+    "retrieval_method": "semantic_search",
+    "latency_ms": 42.0,
+    "top_k": 5,
+    "reranker_name": null
+  },
+  "context_assembly": {
+    "assembled_context": "The product team meets every Tuesday morning. Coffee is served in the lobby after 9 AM.",
+    "chunks_used": [
+      "chunk-1",
+      "chunk-2"
+    ],
+    "total_tokens": 36,
+    "window_size": 4096,
+    "truncation_applied": false
+  },
+  "llm_generation": {
+    "model_name": "gpt-4.1-mini",
+    "generated_answer": "The company was founded in 2020 and has coffee in the lobby.",
+    "latency_ms": 590.0,
+    "tokens_input": 190,
+    "tokens_output": 31,
+    "cost_usd": 0.0011,
+    "temperature": 0.3,
+    "max_tokens": 256,
+    "top_p": 1.0,
+    "system_prompt": null,
+    "user_query": "When was the company founded?",
+    "full_prompt": null
+  },
+  "final_answer": "The company was founded in 2020 and has coffee in the lobby.",
+  "errors": [],
+  "summary": {
+    "total_latency_ms": 632.0,
+    "total_input_tokens": 190,
+    "total_output_tokens": 31,
+    "total_cost_usd": 0.0011,
+    "retrieved_chunk_count": 3,
+    "context_chunk_count": 2
+  },
+  "quality_score": null,
+  "issues_detected": [],
+  "recommendations": []
+}

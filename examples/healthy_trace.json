@@ -1,0 +1,135 @@
+{
+  "trace_id": "healthy-trace-001",
+  "schema_version": "0.1",
+  "timestamp": "2026-04-17T10:00:00Z",
+  "status": "completed",
+  "pipeline_name": "healthy-demo",
+  "tags": [
+    "example",
+    "healthy"
+  ],
+  "metadata": {},
+  "privacy": {
+    "store_full_prompt": false,
+    "store_full_embeddings": false,
+    "redacted_fields": []
+  },
+  "query_input": {
+    "text": "What is retrieval augmented generation?",
+    "timestamp": "2026-04-17T10:00:00Z",
+    "query_id": "query-healthy-001",
+    "metadata": {}
+  },
+  "embedding_step": {
+    "query_text": "What is retrieval augmented generation?",
+    "embedding_model": "text-embedding-3-small",
+    "latency_ms": 24.0,
+    "tokens_used": 9,
+    "embedding_dimensions": 3,
+    "embedding_preview": [
+      0.12,
+      0.42,
+      0.91
+    ],
+    "embedding": null
+  },
+  "retrieval_step": {
+    "query_embedding": null,
+    "num_chunks_retrieved": 2,
+    "retrieved_chunks": [
+      {
+        "chunk_id": "chunk-1",
+        "text": "RAG combines retrieval and generation so answers stay grounded in external knowledge.",
+        "source": "docs/rag.md",
+        "similarity_score": 0.95,
+        "rank": 1,
+        "chunk_index": 0,
+        "metadata": {},
+        "document_id": "rag-doc",
+        "document_version": "1",
+        "content_hash": "abc123",
+        "chunk_size": 256,
+        "chunk_overlap": 32
+      },
+      {
+        "chunk_id": "chunk-2",
+        "text": "Retrieved documents can improve factual accuracy and reduce unsupported claims.",
+        "source": "docs/rag.md",
+        "similarity_score": 0.88,
+        "rank": 2,
+        "chunk_index": 1,
+        "metadata": {},
+        "document_id": "rag-doc",
+        "document_version": "1",
+        "content_hash": "def456",
+        "chunk_size": 256,
+        "chunk_overlap": 32
+      }
+    ],
+    "retrieval_method": "semantic_search",
+    "latency_ms": 36.0,
+    "top_k": 5,
+    "reranker_name": "cross-encoder-mini"
+  },
+  "reranker_step": {
+    "reranker_name": "cross-encoder-mini",
+    "latency_ms": 12.0,
+    "input_chunk_count": 2,
+    "output_chunk_count": 2,
+    "reranked_chunks": [
+      {
+        "chunk_id": "chunk-1",
+        "reranked_rank": 1,
+        "original_rank": 1,
+        "original_similarity": 0.95,
+        "reranker_score": 0.98
+      },
+      {
+        "chunk_id": "chunk-2",
+        "reranked_rank": 2,
+        "original_rank": 2,
+        "original_similarity": 0.88,
+        "reranker_score": 0.93
+      }
+    ]
+  },
+  "context_assembly": {
+    "assembled_context": "RAG combines retrieval and generation so answers stay grounded in external knowledge. Retrieved documents can improve factual accuracy and reduce unsupported claims.",
+    "chunks_used": [
+      "chunk-1",
+      "chunk-2"
+    ],
+    "total_tokens": 44,
+    "window_size": 4096,
+    "truncation_applied": false,
+    "latency_ms": null
+  },
+  "llm_generation": {
+    "model_name": "gpt-4.1-mini",
+    "generated_answer": "Retrieval augmented generation combines document retrieval with generation so an LLM can answer using external knowledge.",
+    "latency_ms": 410.0,
+    "tokens_input": 220,
+    "tokens_output": 46,
+    "cost_usd": 0.0013,
+    "temperature": 0.2,
+    "max_tokens": 256,
+    "top_p": 1.0,
+    "system_prompt": null,
+    "user_query": "What is retrieval augmented generation?",
+    "full_prompt": null
+  },
+  "final_answer": "Retrieval augmented generation combines document retrieval with generation so an LLM can answer using external knowledge.",
+  "errors": [],
+  "summary": {
+    "total_latency_ms": 482.0,
+    "total_input_tokens": 220,
+    "total_output_tokens": 46,
+    "total_cost_usd": 0.0013,
+    "retrieved_chunk_count": 2,
+    "context_chunk_count": 2,
+    "validation_warnings": []
+  },
+  "quality_score": null,
+  "issues_detected": [],
+  "recommendations": []
+}

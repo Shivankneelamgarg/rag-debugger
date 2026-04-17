@@ -19,3 +19,7 @@ app/
 static/
 templates/
 requirements.txt
+LOCAL_ROADMAP.md
+report.html
+dashboard.html
+examples/generated/

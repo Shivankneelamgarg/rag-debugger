@@ -12,6 +12,8 @@ It helps developers answer questions like:
 
 The tool is built for local debugging first: trace a RAG run, save it as JSON, and inspect it with `rag-debug`.
 
+Important: RAG Debugger analyzes a RAG run trace (like `trace.json`), not your raw dataset JSON. You generate traces by instrumenting your app (or running the included demos), then analyze them with the CLI.
+
 ## New To This?
 
 If you are a beginner, here is the simplest way to think about this project:
@@ -53,36 +55,13 @@ What will happen:
 
 If that works, the package is installed correctly and you are ready to try it on your own RAG app.
 
-## Available Now
+Example output (shortened):
 
-What is available in this repo today:
-
-- core trace models for query, embedding, retrieval, reranking, context, and LLM output
-- `RAGTracer` for manual tracing, context-manager tracing, and decorator-based tracing
-- `AutoInstrumentedRAGPipeline` for deeper framework auto-instrumentation around callable RAG components
-- trace save and load support for `json` and `jsonl`
-- analysis for retrieval quality, context pressure, grounding, numeric-claim mismatches, latency, tokens, and cost
-- CLI commands:
-  - `rag-debug view`
-  - `rag-debug analyze`
-  - `rag-debug stats`
-  - `rag-debug aggregate`
-  - `rag-debug team-report`
-  - `rag-debug diff`
-  - `rag-debug explain`
-  - `rag-debug dashboard`
-  - `rag-debug serve-dashboard`
-  - `rag-debug export`
-- HTML report export
-- static HTML dashboard export
-- live auto-refreshing dashboard server
-- LangChain adapter helpers
-- LlamaIndex adapter helpers
-- stronger explanation providers with heuristic, structured, and external-provider modes
-- richer team analytics with grouped metrics, tag counts, trend points, and top findings
-- example trace files for healthy, weak-retrieval, and grounding-problem scenarios
-- tested local package install with passing test suite
-- GitHub Actions for tests, package validation, and release publishing
+```text
+Overall health: 96.0 (EXCELLENT)
+Retrieval: 0.90 | Context: 1.00 | Grounding: 1.00 | Performance: 1.00
+Recommendations: keep search settings; grounding looks healthy
+```
 
 ## What It Is
 
@@ -507,7 +486,3 @@ Today the analyzer can inspect:
 - embeddings are not stored by default
 - full prompts are optional
 - grounding detection in v1 is heuristic, not guaranteed truth
-
-## Notes About This Workspace
-
-The legacy `app/` FastAPI sample left in this workspace is not part of the RAG Debugger package.
